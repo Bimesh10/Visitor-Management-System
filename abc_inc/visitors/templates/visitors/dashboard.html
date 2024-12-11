@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        .dashboard-container {
+            display: flex;
+            flex-direction: column;
+            margin: 20px;
+        }
+        .dashboard-item {
+            margin-bottom: 15px;
+        }
+        .dashboard-item h3 {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <h1>Office Dashboard</h1>
+        
+        <div class="dashboard-item">
+            <h3>Total Employees (Active): {{ num_employees }}</h3>
+        </div>
+
+        <div class="dashboard-item">
+            <h3>Monthly Visitors: {{ monthly_visitors }}</h3>
+        </div>
+
+        <div class="dashboard-item">
+            <h3>Visitor Frequency:</h3>
+            <ul>
+                {% for visitor in visitor_frequency %}
+                    <li>{{ visitor.name }} - {{ visitor.visit_count }} visits</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="dashboard-item">
+            <h3>Average Time Taken for Visits: {{ average_time_taken|floatformat:2 }} minutes</h3>
+        </div>
+    </div>
+</body>
+</html>
