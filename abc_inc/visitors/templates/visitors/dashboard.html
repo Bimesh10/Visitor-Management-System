@@ -5,16 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
         .dashboard-container {
             display: flex;
             flex-direction: column;
+            align-items: center;
             margin: 20px;
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
         }
         .dashboard-item {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 100%;
         }
         .dashboard-item h3 {
             margin-bottom: 10px;
+        }
+        .dashboard-item ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .dashboard-item li {
+            padding: 5px 0;
+        }
+        h1 {
+            color: #4CAF50;
+        }
+        @media (max-width: 768px) {
+            .dashboard-container {
+                padding: 15px;
+                margin: 10px;
+            }
+            .dashboard-item {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -22,21 +56,28 @@
     <div class="dashboard-container">
         <h1>Office Dashboard</h1>
         
-        <div class="dashboard-item">
+        <div class="dashboard-item success">
             <h3>Total Employees (Active): {{ num_employees }}</h3>
         </div>
 
-        <div class="dashboard-item">
+        <div class="dashboard-item success">
             <h3>Monthly Visitors: {{ monthly_visitors }}</h3>
         </div>
 
         <div class="dashboard-item">
             <h3>Visitor Frequency:</h3>
-            <ul>
+            <table>
+                <tr>
+                    <th>Visitor Name</th>
+                    <th>Visit Count</th>
+                </tr>
                 {% for visitor in visitor_frequency %}
-                    <li>{{ visitor.name }} - {{ visitor.visit_count }} visits</li>
+                    <tr>
+                        <td>{{ visitor.name }}</td>
+                        <td>{{ visitor.visit_count }}</td>
+                    </tr>
                 {% endfor %}
-            </ul>
+            </table>
         </div>
 
         <div class="dashboard-item">
